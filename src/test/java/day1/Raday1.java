@@ -15,7 +15,7 @@ public class Raday1 {
 		
 	public Object[][] data()
 		{
-			Object[][] studentsinfo = new Object[1][7];
+			Obj[][] studentsinfo = new Obj[1][7];
 			studentsinfo[0][0]= "RHUTU@";
 			
 			studentsinfo[0][1]= "RHUTUJA";
@@ -26,8 +26,6 @@ public class Raday1 {
 			
 			studentsinfo[0][4]="rHUT@0987";
 			
-			studentsinfo[0][5]="1234567893";
-			
 			studentsinfo[0][6]="1";
 			
 			return studentsinfo;
@@ -35,7 +33,7 @@ public class Raday1 {
 		}
 
 		@Test(enabled = true  dataProvider="info1")
-		public void create(String username,String firstname,String lastname,String email,String password,String phone,String Status)
+		public void create(String username,String firstname,String email,String password,String phone,String Status)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
@@ -45,13 +43,9 @@ public class Raday1 {
 			
 			object1.put("firstName", firstname);
 			
-			object1.put("lastName", lastname);
-			
 			object1.put("email", email);
 			
 			object1.put("password", password);
-			
-			object1.put("phone", phone);
 			
 			object1.put("userstatus", Status);
 			
@@ -95,13 +89,9 @@ public class Raday1 {
 			
 			studentsinfo[0][1]= "RHUTUJA";
 			
-			studentsinfo[0][2]=  "RAJUSKAR";
-			
 			studentsinfo[0][3]="R@GMAIL.COM";
 			
 			studentsinfo[0][4]="rHUT@0987";
-			
-			studentsinfo[0][5]="1234567893";
 			
 			studentsinfo[0][6]="1";
 			
@@ -110,25 +100,21 @@ public class Raday1 {
 		}
 
 		@Test(enabled = false,  dataProvider="info1")
-		public void modify(String uname,String fname,String lname,String email,String password,String phone,String userStatus)
+		public void modify(String uname,String firstname,String email,String password,String Status)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
 			JSONObject object = new JSONObject();	
 			
-			object.put("username", uname);
+			object.put("username", username);
 			
-			object.put("firstName", fname);
-			
-			object.put("lastName", lname);
-			
+			object.put("firstName", fisrtname);
+		
 			object.put("email", email);
 			
 			object.put("password", password);
 			
-			object.put("phone", phone);
-			
-			object.put("userstatus", userStatus);
+			object.put("userstatus", Status);
 			
 			given()
 				.headers("content-type","application/json")
