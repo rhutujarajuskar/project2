@@ -11,34 +11,42 @@ import io.restassured.response.Response;
 
 public class Raday1 {
 
-		@DataProvider(name="tes1")
-		public Object[][] data()
+		@DataProvider(name="test1")
+		
+	public Object[][] data()
 		{
 			Object[][] studentsinfo = new Object[1][7];
 			studentsinfo[0][0]= "RHUTU@";
+			
 			studentsinfo[0][1]= "RHUTUJA";
+			
 			studentsinfo[0][2]=  "RAJUSKAR";
+			
 			studentsinfo[0][3]="R@GMAIL.COM";
+			
 			studentsinfo[0][4]="rHUT@0987";
+			
 			studentsinfo[0][5]="1234567893";
+			
 			studentsinfo[0][6]="1";
+			
 			return studentsinfo;
 			
 		}
 
 		@Test(enabled = true,dataProvider="testdata1")
-		public void createuser(String uname,String fname,String lname,String email,String password,String phone,String userStatus)
+		public void create(String username,String firstname,String lastname,String email,String password,String phone,String Status)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
-			JSONObject obj = new JSONObject();	
-			obj.put("username", uname);
-			obj.put("firstName", fname);
-			obj.put("lastName", lname);
-			obj.put("email", email);
-			obj.put("password", password);
-			obj.put("phone", phone);
-			obj.put("userstatus", userStatus);
+			JSONObject object1 = new JSONObject();	
+			object1.put("username", username);
+			object1.put("firstName", firstname);
+			object1.put("lastName", lastname);
+			object1.put("email", email);
+			object1.put("password", password);
+			object1.put("phone", phone);
+			object1.put("userstatus", Status);
 			
 			given()
 				.headers("content-type","application/json")
@@ -52,7 +60,7 @@ public class Raday1 {
 		}
 		
 		@Test(enabled = false)
-		public void getuser()
+		public void get()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
@@ -65,39 +73,55 @@ public class Raday1 {
 				.get("/user/RHUTUJA@").
 			then()
 				.statusCode(200)
+		
+				
 				.log().all();
 				
 		}
 		
-		@DataProvider(name="testdata")
+		@DataProvider(name="data")
 		public Object[][] data1()
 		{
 			Object[][] studentsinfo = new Object[1][7];
 			
 			studentsinfo[0][0]= "RHUTU@";
+			
 			studentsinfo[0][1]= "RHUTUJA";
+			
 			studentsinfo[0][2]=  "RAJUSKAR";
+			
 			studentsinfo[0][3]="R@GMAIL.COM";
+			
 			studentsinfo[0][4]="rHUT@0987";
+			
 			studentsinfo[0][5]="1234567893";
+			
 			studentsinfo[0][6]="1";
+			
 			return studentsinfo;
 			
 		}
 
-		@Test(enabled = false,dataProvider="testdata")
-		public void modifyuser(String uname,String fname,String lname,String email,String password,String phone,String userStatus)
+		@Test(enabled = false,  dataProvider="data1")
+		public void modify(String uname,String fname,String lname,String email,String password,String phone,String userStatus)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
-			JSONObject obj = new JSONObject();	
-			obj.put("username", uname);
-			obj.put("firstName", fname);
-			obj.put("lastName", lname);
-			obj.put("email", email);
-			obj.put("password", password);
-			obj.put("phone", phone);
-			obj.put("userstatus", userStatus);
+			JSONObject object = new JSONObject();	
+			
+			object.put("username", uname);
+			
+			object.put("firstName", fname);
+			
+			object.put("lastName", lname);
+			
+			object.put("email", email);
+			
+			object.put("password", password);
+			
+			object.put("phone", phone);
+			
+			object.put("userstatus", userStatus);
 			
 			given()
 				.headers("content-type","application/json")
@@ -112,7 +136,7 @@ public class Raday1 {
 		
 		
 		@Test(enabled = false)
-		public void deleteuser()
+		public void delete()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
