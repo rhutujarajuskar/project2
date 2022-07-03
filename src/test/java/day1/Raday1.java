@@ -34,18 +34,25 @@ public class Raday1 {
 			
 		}
 
-		@Test(enabled = true,dataProvider="testdata1")
+		@Test(enabled = true  dataProvider="info1")
 		public void create(String username,String firstname,String lastname,String email,String password,String phone,String Status)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
 			JSONObject object1 = new JSONObject();	
+			
 			object1.put("username", username);
+			
 			object1.put("firstName", firstname);
+			
 			object1.put("lastName", lastname);
+			
 			object1.put("email", email);
+			
 			object1.put("password", password);
+			
 			object1.put("phone", phone);
+			
 			object1.put("userstatus", Status);
 			
 			given()
@@ -59,7 +66,7 @@ public class Raday1 {
 				
 		}
 		
-		@Test(enabled = false)
+		@Test(enabled = true)
 		public void get()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
@@ -79,7 +86,7 @@ public class Raday1 {
 				
 		}
 		
-		@DataProvider(name="data")
+		@DataProvider(name="info1")
 		public Object[][] data1()
 		{
 			Object[][] studentsinfo = new Object[1][7];
@@ -102,7 +109,7 @@ public class Raday1 {
 			
 		}
 
-		@Test(enabled = false,  dataProvider="data1")
+		@Test(enabled = false,  dataProvider="info1")
 		public void modify(String uname,String fname,String lname,String email,String password,String phone,String userStatus)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
@@ -135,7 +142,7 @@ public class Raday1 {
 		}
 		
 		
-		@Test(enabled = false)
+		@Test(enabled = true)
 		public void delete()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
@@ -144,6 +151,7 @@ public class Raday1 {
 			
 			given()
 				.headers("content-type","application/json")
+				
 				.body(obj.toJSONString()).
 			when()
 				.delete("/user/RHUTUJA@").
