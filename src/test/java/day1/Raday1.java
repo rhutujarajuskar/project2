@@ -15,7 +15,7 @@ public class Raday1 {
 		
 	public Object[][] data()
 		{
-			Obj[][] studentsinfo = new Obj[1][7];
+			Obj[][] studentsinfo = new Obj[1][6];
 			studentsinfo[0][0]= "RHUTU@";
 			
 			studentsinfo[0][1]= "RHUTUJA";
@@ -26,14 +26,15 @@ public class Raday1 {
 			
 			studentsinfo[0][4]="rHUT@0987";
 			
-			studentsinfo[0][6]="1";
+			studentsinfo[0][5]="1";
 			
 			return studentsinfo;
 			
 		}
 
 		@Test(enabled = true  dataProvider="info1")
-		public void create(String username,String firstname,String email,String password,String phone,String Status)
+		public void create(String username,String firstname,String email,
+				   String password,String phone,String Status)
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
@@ -61,6 +62,7 @@ public class Raday1 {
 		}
 		
 		@Test(enabled = true)
+	
 		public void get()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
@@ -83,7 +85,7 @@ public class Raday1 {
 		@DataProvider(name="info1")
 		public Object[][] data1()
 		{
-			Object[][] studentsinfo = new Object[1][7];
+			Object[][] studentsinfo = new Object[1][6];
 			
 			studentsinfo[0][0]= "RHUTU@";
 			
@@ -93,14 +95,16 @@ public class Raday1 {
 			
 			studentsinfo[0][4]="rHUT@0987";
 			
-			studentsinfo[0][6]="1";
+			studentsinfo[0][5]="1";
 			
 			return studentsinfo;
 			
 		}
 
 		@Test(enabled = false,  dataProvider="info1")
-		public void modify(String uname,String firstname,String email,String password,String Status)
+		public void modify(String uname,String firstname,
+				   String email,String password,String Status)
+		
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
@@ -128,8 +132,7 @@ public class Raday1 {
 		}
 		
 		
-		@Test(enabled = true)
-		public void delete()
+		@Test(enabled = true)    public void delete()
 		{
 			RestAssured.baseURI="https://petstore.swagger.io/v2";
 			
